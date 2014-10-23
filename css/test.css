@@ -1,0 +1,7 @@
+#Design {
+    width: 50%
+}
+
+#barTopLeft {
+    transform: "translate(0,200)";
+}
