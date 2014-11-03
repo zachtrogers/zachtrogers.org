@@ -1,9 +1,8 @@
 <?php
-  $app->post("/login", function () use ($app) {
+  $app->post("/login", function () use ($app, $query) {
       $email = $app->request()->post('email');
       $password = $app->request()->post('password');
-      $results = $app->queryDb;
-      $results = $results('SELECT username, password FROM blog_user WHERE username = \'$email\' AND password = \'$password\'');
+      $results = $query('SELECT username, password FROM blog_user WHERE username = \'$email\' AND password = \'$password\'');
 
       if($results != "error"){
         // The login was successful

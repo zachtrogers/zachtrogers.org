@@ -1,7 +1,7 @@
 <?php
 	
 	// Runs queries against the blog database
-	$app->queryDb = function($query){
+	$query = function($query){
 		$connection = mysqli_connect("localhost", "blog_admin", "A8U7hrvVJq9Pba9a", "blog");
 		if (!$connection) {
 		    die("Connection failed: " . mysqli_connect_error());
