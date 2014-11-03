@@ -1,18 +1,20 @@
 <?php
-	$app->hook('databaseInit', function() use ($app) {
-	  $connectData = mysqli_connect("localhost", "blog_admin", "A8U7hrvVJq9Pba9a", "blog");
-	  if (!$connectData) {
-	      die("Connection failed: " . mysqli_connect_error());
-	  }
-	  $result = mysqli_query($connectData, $app->query);
-    if(mysqli_num_rows($result) > 0){
-      $app->result = $result;
-    }else{
-      $app->result = "error";
-    }
-    mysqli_close($connectData);
-    return $app->result;
-	});
+	
+	// Runs queries against the blog database
+	$app->queryDb = function($query){
+		$connection = mysqli_connect("localhost", "blog_admin", "A8U7hrvVJq9Pba9a", "blog");
+		if (!$connection) {
+		    die("Connection failed: " . mysqli_connect_error());
+		}
+		$result = mysqli_query($connection, $query);
+	    if(mysqli_num_rows($result) > 0){
+	      $result = $result;
+	    }else{
+	      $result = "error";
+	    }
+	    mysqli_close($connectData);
+	    return $result;
+	};
 
 	$authenticate = function ($app) {
 	    return function () use ($app) {
