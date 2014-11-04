@@ -2,11 +2,11 @@
   $app->post("/login", function () use ($app, $query) {
       $email = $app->request()->post('email');
       $password = $app->request()->post('password');
-      $results = $query('SELECT username, password FROM blog_user WHERE username = \'$email\' AND password = \'$password\'');
-
+      $results = $query('SELECT username, password FROM blog_user WHERE username = \'' . $email . '\' AND password = \'' . $password . '\'');
+      $results = $results->fetch_assoc();
       if($results != "error"){
         // The login was successful
-        $login = $results->fetch_assoc();
+        $login = $results;
         $serverUsername = $login['username'];
         $serverPassword = $login['password'];
 
@@ -32,7 +32,7 @@
       }
   });
 
-  $app->get("/login", function () use ($app) {
+  $app->get("/login", function () use ($app, $test) {
      // Check for login error messages 
      $flash = $app->view()->getData('flash');
      $email_value = $error = '';  

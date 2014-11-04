@@ -1,11 +1,21 @@
 <? require 'templates/header.php' ?>
 
-<?php 
+	<div id="wrapper" class="noVideo">
+      <div class="background">
+					<article id="blog">
+						<h3>Admin</h3>
+						<section>
 
-	while ($row = $results->fetch_assoc()) {
-		echo $row['post'] . " " . $row['dateSubmitted'] . '<br/>';
-	}
+							<?php 
 
-?>
+								while ($row = $results->fetch_assoc()) {
+									echo $row['post'] . " " . $row['dateSubmitted'] . '<br/>';
+								}
 
-<? require 'templates/footer.php' ?>
+							?>
+
+						</section>
+					</article>
+
+				<? require 'templates/public/menu.php' ?>
+				<? require 'templates/footer.php' ?>

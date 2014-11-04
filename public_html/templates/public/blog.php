@@ -1,15 +1,17 @@
 <? require 'templates/header.php' ?>
 
-<article id="blog">
-	<h3>Blog</h3>
-	<section>
-	    <?php 
-			while ($row = $results->fetch_assoc()) {
-				echo $row['post'] . " " . $row['dateSubmitted'] . '<br/>';
-			}
+	<div id="wrapper" class="noVideo">
+      <div class="background">
+					<article id="blog">
+						<h3>Blog</h3>
+						<section>
+						    <?php 
+								while ($row = $results->fetch_assoc()) {
+									echo $row['post'] . " " . $row['dateSubmitted'] . '<br/>';
+								}
+							?>
+						</section>
+					</article>
 
-		?>
-	</section>
-</article>
-
-<? require 'templates/footer.php' ?>
+				<? require 'templates/public/menu.php' ?>
+				<? require 'templates/footer.php' ?>

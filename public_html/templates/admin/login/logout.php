@@ -1,7 +1,17 @@
 <? require 'templates/header.php' ?>
 
-<h2>You have logged out.</h2>
+	<div id="wrapper" class="noVideo">
+      <div class="background">
+					<article id="blog">
+						<h3>Logout</h3>
+						<section>
 
-<p><a href="/">Back Home</a></p>
+							<h2>You have logged out.</h2>
 
-<? require 'templates/footer.php' ?>
+							<p><a href="/">Back Home</a></p>
+
+						</section>
+					</article>
+
+				<? require 'templates/public/menu.php' ?>
+				<? require 'templates/footer.php' ?>

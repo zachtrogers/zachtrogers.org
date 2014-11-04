@@ -1,18 +1,30 @@
 <?php
-	
-	// Runs queries against the blog database
+
+// Runs queries against the blog database
 	$query = function($query){
 		$connection = mysqli_connect("localhost", "blog_admin", "A8U7hrvVJq9Pba9a", "blog");
 		if (!$connection) {
 		    die("Connection failed: " . mysqli_connect_error());
 		}
 		$result = mysqli_query($connection, $query);
-	    if(mysqli_num_rows($result) > 0){
-	      $result = $result;
-	    }else{
-	      $result = "error";
-	    }
-	    mysqli_close($connectData);
+ 
+		if(gettype($result)=="boolean"){
+			// Query is an insert statment
+			if($result==true){
+				$result = mysqli_insert_id($connection);
+			}else{
+				$result = "error";
+			}
+		}else{
+			// Query is SELECT, SHOW, DESCRIBE, or EXPLAIN
+			if(mysqli_num_rows($result) > 0){
+		      $result = $result;
+		    }else{
+		      $result = "error";
+		    }
+		}
+	    
+	    mysqli_close($connection);
 	    return $result;
 	};
 
@@ -33,3 +45,6 @@
 	   }
 	   $app->view()->setData('user', $user);
 	});
+
+
+	$test = "zach";
