@@ -9,6 +9,10 @@
 								while ($row = $results->fetch_assoc()) {
 									?>
 									<h2><?php echo $row['title']?></h2>
+									<?if (!empty($user)):?>
+	                	<a href="/blogEdit/<?php echo $row['url']?>">Edit<a/>
+										<a href="/blogDelete/<?php echo $row['id']?>">Delete<a/>
+		               <?endif;?>
 									<div>
 										<?php echo $row['post']?>
 									<div>

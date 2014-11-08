@@ -40,7 +40,10 @@
 	    return function () use ($app) {
 	        if (!isset($_SESSION['user'])) {
 	            $_SESSION['urlRedirect'] = $app->request()->getPathInfo();
-	            $app->flash('error', 'Login required');
+	            $errors = Array();
+	            $errors['error'] = 'Login required';
+	            $errors['email'] = '';
+	            $app->flash('error', $errors);
 	            $app->redirect('/login');
 	        }
 	    };
