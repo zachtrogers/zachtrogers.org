@@ -2,16 +2,15 @@
   $app->post("/login", function () use ($app, $query) {
       $email = $app->request()->post('email');
       $password = $app->request()->post('password');
-      $results = $query('SELECT username, password FROM blog_user WHERE username = \'' . $email . '\' AND password = \'' . $password . '\'');
-      $results = $results->fetch_assoc();
+      $results = $query('SELECT username, password, displayName, id FROM blog_user WHERE username = \'' . $email . '\' AND password = \'' . $password . '\'');
       if($results != "error"){
         // The login was successful
-        $login = $results;
-        $serverUsername = $login['username'];
-        $serverPassword = $login['password'];
+        $login = $results->fetch_assoc();
 
         // Set the username for the session
         $_SESSION['user'] = $login['username'];
+        $_SESSION['displayName'] = $login['displayName'];
+        $_SESSION['userNumber'] = $login['id'];
 
         // If we are suposed to redirect some place then do it. 
         if (isset($_SESSION['urlRedirect'])) {
@@ -32,7 +31,7 @@
       }
   });
 
-  $app->get("/login", function () use ($app, $test) {
+  $app->get("/login", function () use ($app) {
      // Check for login error messages 
      $flash = $app->view()->getData('flash');
      $email_value = $error = '';  

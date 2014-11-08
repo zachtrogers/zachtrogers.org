@@ -1,12 +1,13 @@
 <?php
 
 	$app->post("/blogNew", function () use ($app, $query) {
-    $post = $app->request()->post('post');
-    $varPost = str_replace('"','\"',$post);
-		$userName = $app->request()->post('userName');
-		$results = $query('INSERT INTO blog_contents (post, submitter) VALUES ("' .$varPost . '", "' .$userName . '")');
+    $varPost = addslashes($app->request()->post('post'));
+		$userNumber = $app->request()->post('userNumber');
+		$blogTitle = addslashes($app->request()->post('blogTitle'));
+		$blogUrl = $app->request()->post('blogUrl');
+		$results = $query('INSERT INTO blog_contents (title, post, submitter, url) VALUES ("' .$blogTitle . '","' .$varPost . '", "' .$userNumber . '", "' .$blogUrl . '")');
 		if($results != "error"){
-			$app->redirect('blogEdit/' . $results . '');
+			$app->redirect('blogEdit' . $results . '');
 		}else{
 			echo $results;
 		}

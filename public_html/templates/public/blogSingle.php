@@ -8,9 +8,7 @@
 						    <?php 
 								while ($row = $results->fetch_assoc()) {
 									?>
-									<h2><a href="/blogAdmin/<?php echo $row['url']?>"><?php echo $row['title']?><a/></h2>
-									<a href="/blogEdit<?php echo $row['url']?>">Edit<a/>
-									<a href="/blogDelete<?php echo $row['id']?>">Delete<a/>
+									<h2><?php echo $row['title']?></h2>
 									<div>
 										<?php echo $row['post']?>
 									<div>

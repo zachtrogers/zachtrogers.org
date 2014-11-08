@@ -7,7 +7,6 @@
 		    die("Connection failed: " . mysqli_connect_error());
 		}
 		$result = mysqli_query($connection, $query);
- 
 		if(gettype($result)=="boolean"){
 			// Query is an insert statment
 			if($result==true){
@@ -28,6 +27,15 @@
 	    return $result;
 	};
 
+
+//test function for multiple variables
+	$test = function(){
+			$test = array();
+			$test[0] = "test0";
+			$test[1] = "test1";
+	    return $test;
+	};
+
 	$authenticate = function ($app) {
 	    return function () use ($app) {
 	        if (!isset($_SESSION['user'])) {
@@ -39,12 +47,21 @@
 	};
 
 	$app->hook('slim.before.dispatch', function() use ($app) { 
-	   $user = null;
-	   if (isset($_SESSION['user'])) {
-	      $user = $_SESSION['user'];
-	   }
-	   $app->view()->setData('user', $user);
+	  $user = null;
+	  if (isset($_SESSION['user'])) {
+     $user = $_SESSION['user'];
+	  }
+	  $displayName = null;
+	  if (isset($_SESSION['displayName'])) {
+	    $displayName = $_SESSION['displayName'];
+	  }
+	  $userNumber = null;
+	  if (isset($_SESSION['userNumber'])) {
+	    $userNumber = $_SESSION['userNumber'];
+	  }
+		$app->view()->setData(array(
+	    'user' => $user,
+	    'displayName' => $displayName,
+	    'userNumber' => $userNumber
+		));
 	});
-
-
-	$test = "zach";

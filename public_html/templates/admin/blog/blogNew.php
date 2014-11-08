@@ -6,12 +6,10 @@
 						<h3>New</h3>
 						<section>
 							<form action="/blogNew" method="post">
-								<textarea name="post" style="width:300px !important"></textarea>
-							  <select style="width:150px !important" name="userName">
-							    <option value="Zach">
-							      Zach
-							    </option>
-							  </select>
+								<input id="blogTitle" onKeyUp="url()" type="text" name="blogTitle" placeholder="Title">
+								<input id="blogURL" type="text" name="blogUrl" placeholder="URL">
+								<textarea name="post" class="advancedEdit" style="width:300px !important"></textarea>
+							  <input type="hidden" name="userNumber" value="<?=$userNumber?>">
 								<input type="submit" value="Save" />
 							</form>
 						</section>
@@ -19,4 +17,5 @@
 
 				<? require 'templates/public/menu.php' ?>
 				<? require 'templates/footer.php' ?>
+				<script src="/js/admin.js"></script>
 									

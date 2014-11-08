@@ -1,10 +1,10 @@
 			</div>
 		</div>
 	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	    <script type="text/javascript" src="js/vendor/tinymce/tinymce.min.js"></script>
+	    <script type="text/javascript" src="/js/vendor/tinymce/tinymce.min.js"></script>
 	    <script type="text/javascript">
 	        tinymce.init({
-	        selector: "textarea",
+	        selector: "textarea.advancedEdit",
 	        theme: "modern",
 	        width: 680,
 	        height: 300,
@@ -22,11 +22,11 @@
 	       external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
 	     });
 	    </script>
-	    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+	    <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
 	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh6gDsqWI_s92B8jNn1NCpsmWXV5nbahU"></script>
 	    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-	    <script src="js/plugins.js"></script>
-	    <script src="js/global.js"></script>
+	    <script src="/js/plugins.js"></script>
+	    <script src="/js/global.js"></script>
 	    <script>
 	        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
 	        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;

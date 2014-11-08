@@ -15,12 +15,15 @@
                     <li><a class="navBarLink" href="/blog">Blog</a></li>
                 <?else:?>
                     <li><a class="navBarLink" href="/blogAdmin">Blog</a></li>
-                    <li><a class="navBarLink" href="/blogNew">New</a></li>
-                    <li><a class="navBarLink" href="/settings">Settings</a></li>
-                    <li><a class="navBarLink" href="/logout">Logout</a></li>
+                    <li><a class="navBarLink admin" href="/blogNew">New</a></li>
+                    <li><a class="navBarLink admin" href="/settings">Settings</a></li>
+                    <li><a class="navBarLink admin" href="/logout">Logout</a></li>
                 <?endif;?>
                 <?if (!empty($user)):?>
                 <p>Hi <?=$user?>
+                <?endif;?>
+                <?if (!empty($displayName)):?>
+                <p>Hi <?=$displayName?>
                 <?endif;?>
             </ul>
         </div>

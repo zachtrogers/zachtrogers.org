@@ -5,13 +5,15 @@
 					<article id="blog">
 						<h3>Edit</h3>
 						<section>
+							<?if(!empty($status)):?>
+							<p class="status"><?=$status?></p>
+							<?endif;?>
+							<a href="/blogDelete<?php echo $id ?>">Delete<a/>
 							<form action="/blogEdit" method="post">
-								<textarea name="post" style="width:300px !important" value="<?=$post?>"></textarea>
-							  <select style="width:150px !important" name="userName">
-							    <option value="Zach">
-							      Zach
-							    </option>
-							  </select>
+								<input id="blogTitle" onKeyUp="url()" type="text" name="blogTitle" value="<?=$blogTitle?>">
+								<input id="blogURL" type="text" name="blogUrl" value="<?=$blogUrl?>">
+								<textarea name="post" class="advancedEdit" style="width:300px !important"><?php echo $post?></textarea>
+								<input type="hidden" name="id" value="<?=$id?>">
 								<input type="submit" value="Save" />
 							</form>
 						</section>
@@ -19,4 +21,5 @@
 
 				<? require 'templates/public/menu.php' ?>
 				<? require 'templates/footer.php' ?>
+				<script src="/js/admin.js"></script>
 		

@@ -8,15 +8,14 @@
 						    <?php 
 								while ($row = $results->fetch_assoc()) {
 									?>
-									<h2><a href="/blogAdmin/<?php echo $row['url']?>"><?php echo $row['title']?><a/></h2>
-									<a href="/blogEdit<?php echo $row['url']?>">Edit<a/>
-									<a href="/blogDelete<?php echo $row['id']?>">Delete<a/>
+									<h2><?php echo $row['title']?></h2>
 									<div>
 										<?php echo $row['post']?>
 									<div>
 									<div>
-										<span><?php echo date("l, F jS, Y @ H:ia",strtotime($row['dateSubmitted']));?></span>
-										<span>By: <?php echo $row['displayName']?></span>
+										<span><?php echo $row['dateSubmitted']?></span>
+										<span><?php echo $row['submitter']?></span>
+										<?php echo $row['id']?>
 									</div>
 										<?php
 								}

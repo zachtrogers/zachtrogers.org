@@ -7,7 +7,16 @@
 						<section>
 						    <?php 
 								while ($row = $results->fetch_assoc()) {
-									echo $row['post'] . " " . $row['dateSubmitted'] . '<br/>';
+									?>
+									<h2><a href="/blog/<?php echo $row['url']?>"><?php echo $row['title']?><a/></h2>
+									<div>
+										<?php echo $row['post']?>
+									<div>
+									<div>
+										<span><?php echo date("l, F jS, Y @ H:ia",strtotime($row['dateSubmitted']));?></span>
+										<span>By: <?php echo $row['displayName']?></span>
+									</div>
+										<?php
 								}
 							?>
 						</section>
