@@ -17,22 +17,15 @@ google.maps.event.addDomListener(window, 'load', initialize);
 //video stop on scroll
 $(window).scroll(function() {
 	vid = document.getElementById("backgroundVideo"); 
-	if (scrollY >= $(window).height()){
-		vid.pause();
-	} else {
-		vid.play();
+	if(vid != null){
+		vid = document.getElementById("backgroundVideo"); 
+		if (scrollY >= $(window).height()){
+			vid.pause();
+		} else {
+			vid.play();
+		}
 	}
 });
-
-//video play/pause (NOT USED)
-function playPause() {
-    var vid = document.getElementById("backgroundVideo"); 
-    if (vid.paused)
-        vid.play();
-    else
-        vid.pause();
-}
-
 
 //height of top fold
 $(window).load(function() {

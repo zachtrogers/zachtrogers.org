@@ -8,14 +8,18 @@
 							<?if(!empty($status)):?>
 							<p class="status"><?=$status?></p>
 							<?endif;?>
-							<button title="Delete" type="button" onclick="location.href='/blogDelete/<?php echo $url ?>'">
-                <span>
-                  Delete
-                </span>
-			        </button>
+							<button title="Delete" type="button" onclick="location.href='/blogDelete/<?php echo $blogUrl ?>'">
+			            <span>
+			              <span>
+			                <span>
+			                  Delete
+			                </span>
+			              </span>
+			            </span>
+			          </button>
 							<form action="/blogEdit" method="post">
-								<input id="title" type="text" name="title" value="<?=$title?>">
-								<input id="url" type="text" onKeyUp="urlStop()" name="url" value="<?=$url?>">
+								<input id="blogTitle" onKeyUp="url()" type="text" name="blogTitle" value="<?=$blogTitle?>">
+								<input id="blogURL" type="text" name="blogUrl" value="<?=$blogUrl?>">
 								<textarea name="post" class="advancedEdit" style="width:300px !important"><?php echo $post?></textarea>
 								<input type="hidden" name="id" value="<?=$id?>">
 								<input type="submit" value="Save" />

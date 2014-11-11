@@ -1,27 +1,25 @@
 <?php
-
 	$app->post("/blogEdit/", function () use ($app, $query) {
-    $varPost = addslashes($app->request()->post('post'));
+    $post = addslashes($app->request()->post('post'));
 		$id = $app->request()->post('id');
-		$blogTitle = addslashes($app->request()->post('blogTitle'));
-		$blogUrl = $app->request()->post('blogUrl');
-		$results = $query('UPDATE blog_contents SET post= \'' . $varPost . '\', title= \'' . $blogTitle . '\', url= \'' . $blogUrl . '\' WHERE id = \'' . $id . '\'');
+		$title = addslashes($app->request()->post('title'));
+		$url = $app->request()->post('url');
+		$results = $query('UPDATE ztr_blog SET post= \'' . $post . '\', title= \'' . $title . '\', url= \'' . $url . '\' WHERE id = \'' . $id . '\'');
 		$app->flash('status', 'Blog Entry Updated');
-		$app->redirect('/blogEdit/' . $blogUrl . '');
+		$app->redirect('/blogEdit/' . $url . '');
   });
 
-
 	$app->get("/blogEdit/:url", $authenticate($app), function ($url) use ($app, $query) {
-		$results = $query('SELECT post, title, url, id FROM blog_contents WHERE url =\'' . $url . '\'');
+		$results = $query('SELECT title, post, url, id FROM ztr_blog WHERE url =\'' . $url . '\'');
 		$results = $results->fetch_assoc();
 		$post = $results['post'];
-		$blogTitle = $results['title'];
+		$title = $results['title'];
 		$id = $results['id'];
-		$blogUrl = $results['url'];
+		$url = $results['url'];
 		$flash = $app->view()->getData('flash');
 		$status = '';
 		if (isset($flash['status'])) {
         $status = $flash['status'];
      }
-	  $app->render('../templates/admin/blog/blogEdit.php', array('results' => $results, 'post' => $post, 'id' => $id, 'status' => $status, 'blogTitle' => $blogTitle, 'blogUrl' => $blogUrl));
+	  $app->render('../templates/admin/blog/blogEdit.php', array('results' => $results, 'post' => $post, 'id' => $id, 'status' => $status, 'title' => $title, 'url' => $url));
  	});

@@ -8,13 +8,17 @@
 							<form action="/blogDelete" method="post">
 								<input type="submit" value="Confirm Delete" />
 								<input type="hidden" name="id" value="<?=$id?>">
-								<span>of <?=$title?></span>
+								<span>of <?=$blogTitle?></span>
 							</form>
-							<button title="Cancel" type="button" onclick="location.href='/blog/<?php echo $url ?>'">
-                <span>
-                  Cancel
-                </span>
-			        </button>
+							<button title="Cancel" type="button" onclick="location.href='/blog/<?php echo $blogUrl ?>'">
+			            <span>
+			              <span>
+			                <span>
+			                  Cancel
+			                </span>
+			              </span>
+			            </span>
+			          </button>
 						</section>
 					</article>
 

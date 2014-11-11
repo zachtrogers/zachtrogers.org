@@ -1,0 +1,116 @@
+/*mobile - currently from woodwalkers*/
+@media only screen and (max-width: 600px) {
+
+	#navBarEntire {
+		display: none;
+	}
+
+	.backgroundVideoWrap {
+		display: none;
+	}
+
+	.videoOverlay {
+		display: none;
+	}
+
+	.mobileTop {
+		display: block;
+	}
+
+	.mobileHeader {
+		top: 0;
+		height: 48px;
+		width: 100%;
+		background-color: #262626;
+		display: inline-block;
+		position: fixed;
+		z-index: 5;
+	}
+
+	#navBarEntireMobile {
+		width: 150px;
+		position: fixed;
+		top: 0;
+		right: 0;
+		color: white;
+		display: none;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	#navBarEntireMobile  a {
+		color: white;
+		text-decoration: none;
+	}
+
+	.mobileNav {
+		padding: 10px;
+		margin: 3px 5px 0 0;
+		right: 0;
+		position: fixed;
+		top: 0;
+	}
+
+	#navBarEntireMobile ul {
+		height: 100%;
+		margin-top: 48px;
+		padding: 0;
+		background-color: #262626;
+		list-style-type: none;
+		border-bottom-left-radius: 10px;
+		-webkit-border-bottom-left-radius: 10px; 
+	}
+
+	#navBarEntireMobile li {
+		border-top: 2px solid gray;
+		padding: 10px 0 10px 0;
+		margin: 0;
+		z-index: 5;
+	}
+
+	#navBarEntireMobile a {
+		padding: 0;
+	}
+
+	.goBox {
+		font-size: 32px;
+		line-height: 103px;
+		max-width: 226px;
+		height: 100px;
+		padding: 0 0 0 50px;
+		background-image: url('images/mobileBorderLeft.png');
+		z-index: 4;
+	}
+
+	.goBox:hover {
+		font-size: 32px;
+		line-height: 103px;
+		max-width: 226px;
+		height: 100px;
+		padding: 0 50px 0 0;
+		background-image: url('images/mobileBorderRight.png');
+		z-index: 4;
+	}
+
+	.mobileLogo {
+		padding: 7px 0 0 3px;
+	}
+
+	/*mobile about */
+	.aboutHeader {
+		display: none;
+	}
+
+	.aboutNavBarWrap {
+		display: none;
+	}
+
+	.aboutPageWrap {
+		height: auto;
+	}
+
+	.aboutContentWrap {
+		padding: 50px 30px 0 30px;
+		width: auto;
+	}
+}

@@ -11,11 +11,18 @@
 							<form action="/settings" method="post">
 								<span>Change Email</span>
 								<input type="text" name="email" value="<?=$email?>">
+								<br />
 								<span>Change Display Name</span>
 								<input type="text" name="userName" value="<?=$displayName?>">
+								<br />
 								<span>Change Password</span>
-								<input type="text" name="password" placeholder="New Password">
-								<input type="text" name="passwordConfirm" placeholder="Confrim New Password">
+								<br />
+								<span>Must be at least 8 characters and contain upper and lower case.</span>
+								<br />
+								<input type="password" name="password" placeholder="New Password">
+								<br />
+								<input type="password" name="passwordConfirm" placeholder="Confrim New Password">
+								<br />
 								<input type="hidden" name="id" value="<?=$userNumber?>">
 								<input type="submit" value="Save" />
 							</form>

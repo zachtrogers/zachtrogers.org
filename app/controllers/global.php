@@ -2,7 +2,10 @@
 
 // Runs queries against the blog database
 	$query = function($query){
-		$connection = mysqli_connect("localhost", "blog_admin", "A8U7hrvVJq9Pba9a", "blog");
+		//mamp test server
+		//$connection = mysqli_connect("localhost", "blog_admin", "A8U7hrvVJq9Pba9a", "blog");
+		//zachtrogers.org server
+		$connection = mysqli_connect("zachtrogers.org", "ztr_admin", "dEb_6j99", "ztr");
 		if (!$connection) {
 		    die("Connection failed: " . mysqli_connect_error());
 		}

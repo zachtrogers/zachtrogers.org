@@ -5,13 +5,33 @@
 					<article id="blog">
 						<h3>Blog</h3>
 						<section>
+							<?if(!empty($status)):?>
+							<p class="status"><?=$status?></p>
+							<?endif;?>
 						    <?php 
 								while ($row = $results->fetch_assoc()) {
 									?>
 									<h2><?php echo $row['title']?></h2>
+									<div class="fb-like" data-href="http://www.zachtrogers.org/blog/<?php echo $row['url']?>" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
 									<?if (!empty($user)):?>
-	                	<a href="/blogEdit/<?php echo $row['url']?>">Edit<a/>
-										<a href="/blogDelete/<?php echo $row['id']?>">Delete<a/>
+                		<button title="Edit" type="button" onclick="location.href='/blogEdit/<?php echo $row['url']?>'">
+					            <span>
+					              <span>
+					                <span>
+					                  Edit
+					                </span>
+					              </span>
+					            </span>
+					          </button>
+										<button title="Delete" type="button" onclick="location.href='/blogDelete/<?php echo $row['url']?>'">
+					            <span>
+					              <span>
+					                <span>
+					                  Delete
+					                </span>
+					              </span>
+					            </span>
+					          </button>
 		               <?endif;?>
 									<div>
 										<?php echo $row['post']?>
@@ -20,6 +40,7 @@
 										<span><?php echo date("l, F jS, Y @ H:ia",strtotime($row['dateSubmitted']));?></span>
 										<span>By: <?php echo $row['displayName']?></span>
 									</div>
+									<div class="fb-comments" data-href="http://www.zachtrogers.org/blog/<?php echo $row['url']?>" data-numposts="3" data-order-by="reserve_time" data-width="100%" data-colorscheme="light"></div>
 										<?php
 								}
 							?>

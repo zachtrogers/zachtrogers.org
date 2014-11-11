@@ -1,9 +1,11 @@
 <?php
   $app->post("/login", function () use ($app, $query) {
-      $email = $app->request()->post('email');
-      $password = $app->request()->post('password');
-      $results = $query('SELECT username, password, displayName, id FROM blog_user WHERE username = \'' . $email . '\' AND password = \'' . $password . '\'');
-      if($results != "error"){
+    $email = $app->request()->post('email');
+    $results = $query('SELECT username, displayName, id FROM ztr_user WHERE username = \'' . $email . '\'');
+    if($results != "error"){
+      $hashQuery = $query('SELECT password FROM ztr_user WHERE username = \'' . $email . '\'');
+      $hash = $hashQuery->fetch_assoc()['password'];
+      if(password_verify($app->request()->post('password'), $hash)){
         // The login was successful
         $login = $results->fetch_assoc();
 
@@ -22,13 +24,21 @@
           $app->redirect('/'); 
         }
       }else{
-        // The login was not successful
+        // The login was not successful - password related
         $error = array();
         $error['error'] = 'Login Failed';
         $error['email'] = $email;
         $app->flash('error', $error);
         $app->redirect('/login');
       }
+    }else{
+      // The login was not successful - username related
+      $error = array();
+      $error['error'] = 'Login Failed';
+      $error['email'] = $email;
+      $app->flash('error', $error);
+      $app->redirect('/login');
+    }
   });
 
   $app->get("/login", function () use ($app) {

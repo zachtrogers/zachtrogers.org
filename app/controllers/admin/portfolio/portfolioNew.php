@@ -5,7 +5,7 @@
 		$userNumber = $app->request()->post('userNumber');
 		$blogTitle = addslashes($app->request()->post('blogTitle'));
 		$blogUrl = $app->request()->post('blogUrl');
-		$results = $query('INSERT INTO ztr_blog (title, post, submitter, url) VALUES ("' .$blogTitle . '","' .$varPost . '", "' .$userNumber . '", "' .$blogUrl . '")');
+		$results = $query('INSERT INTO ztr_porfolio (title, post, submitter, url) VALUES ("' .$blogTitle . '","' .$varPost . '", "' .$userNumber . '", "' .$blogUrl . '")');
 		if($results != "error"){
 			$app->redirect('blogEdit/' . $blogUrl . '');
 		}else{

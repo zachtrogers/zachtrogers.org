@@ -5,7 +5,7 @@ $app = new \Slim\Slim(array(
     'mode' => 'developement'
 ));
 
-// Only invoked if mode is "production"
+//production mode
 $app->configureMode('production', function () use ($app) {
     $app->config(array(
         'log.enable' => true,
@@ -13,7 +13,7 @@ $app->configureMode('production', function () use ($app) {
     ));
 });
 
-// Only invoked if mode is "development"
+//development mode
 $app->configureMode('development', function () use ($app) {
     $app->config(array(
         'log.enable' => false,
@@ -31,6 +31,11 @@ require '../app/controllers/admin/blog/blogNew.php';
 require '../app/controllers/admin/settings/settings.php';
 require '../app/controllers/admin/blog/blogEdit.php';
 require '../app/controllers/admin/blog/blogDelete.php';
+require '../app/controllers/admin/portfolio/portfolioDelete.php';
+require '../app/controllers/admin/portfolio/portfolioEdit.php';
+require '../app/controllers/public/portfolio.php';
+require '../app/controllers/admin/portfolio/portfolioNew.php';
+require '../app/vendor/password.php';
 
 $app->add(new \Slim\Middleware\SessionCookie(array('secret' => 'myappsecret')));
 $app->run();
