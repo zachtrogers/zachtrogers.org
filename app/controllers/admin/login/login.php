@@ -1,18 +1,19 @@
 <?php
+
   $app->post("/login", function () use ($app, $query) {
-    $email = $app->request()->post('email');
-    $results = $query('SELECT username, displayName, id FROM ztr_user WHERE username = \'' . $email . '\'');
+    $username = $app->request()->post('username');
+    $results = $query('SELECT id, username, displayName FROM ztr_user WHERE username = \'' . $username . '\'');
     if($results != "error"){
-      $hashQuery = $query('SELECT password FROM ztr_user WHERE username = \'' . $email . '\'');
+      $hashQuery = $query('SELECT password FROM ztr_user WHERE username = \'' . $username . '\'');
       $hash = $hashQuery->fetch_assoc()['password'];
       if(password_verify($app->request()->post('password'), $hash)){
         // The login was successful
         $login = $results->fetch_assoc();
 
         // Set the username for the session
-        $_SESSION['user'] = $login['username'];
+        $_SESSION['username'] = $login['username'];
         $_SESSION['displayName'] = $login['displayName'];
-        $_SESSION['userNumber'] = $login['id'];
+        $_SESSION['userId'] = $login['id'];
 
         // If we are suposed to redirect some place then do it. 
         if (isset($_SESSION['urlRedirect'])) {
@@ -27,7 +28,7 @@
         // The login was not successful - password related
         $error = array();
         $error['error'] = 'Login Failed';
-        $error['email'] = $email;
+        $error['username'] = $username;
         $app->flash('error', $error);
         $app->redirect('/login');
       }
@@ -35,7 +36,7 @@
       // The login was not successful - username related
       $error = array();
       $error['error'] = 'Login Failed';
-      $error['email'] = $email;
+      $error['username'] = $username;
       $app->flash('error', $error);
       $app->redirect('/login');
     }
@@ -44,10 +45,10 @@
   $app->get("/login", function () use ($app) {
      // Check for login error messages 
      $flash = $app->view()->getData('flash');
-     $email_value = $error = '';  
+     $username_value = $error = '';  
      if (isset($flash['error'])) {
         $error = $flash['error'];
-        $email_value = $error['email'];
+        $username_value = $error['username'];
         $error = $error['error'];
      }
 
@@ -60,5 +61,5 @@
         $urlRedirect = $_SESSION['urlRedirect'];
      }
 
-     $app->render('../templates/admin/login/login.php', array('error' => $error, 'email_value' => $email_value, 'urlRedirect' => $urlRedirect));
+     $app->render('../templates/admin/login/login.php', array('error' => $error, 'username_value' => $username_value, 'urlRedirect' => $urlRedirect));
   });

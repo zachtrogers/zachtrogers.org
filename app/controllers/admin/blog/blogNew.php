@@ -1,13 +1,13 @@
 <?php
 
 	$app->post("/blogNew", function () use ($app, $query) {
-    $varPost = addslashes($app->request()->post('post'));
-		$userNumber = $app->request()->post('userNumber');
-		$blogTitle = addslashes($app->request()->post('blogTitle'));
-		$blogUrl = $app->request()->post('blogUrl');
-		$results = $query('INSERT INTO ztr_blog (title, post, submitter, url) VALUES ("' .$blogTitle . '","' .$varPost . '", "' .$userNumber . '", "' .$blogUrl . '")');
+    $title = addslashes($app->request()->post('title'));
+    $post = addslashes($app->request()->post('post'));
+		$userId = $app->request()->post('userId');
+		$url = $app->request()->post('url');
+		$results = $query('INSERT INTO ztr_blog (title, post, submitter, url) VALUES ("' . $title . '","' . $post . '", "' . $userId . '", "' . $url . '")');
 		if($results != "error"){
-			$app->redirect('blogEdit/' . $blogUrl . '');
+			$app->redirect('blogEdit/' . $url . '');
 		}else{
 			echo $results;
 		}

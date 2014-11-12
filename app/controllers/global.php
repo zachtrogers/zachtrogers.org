@@ -1,5 +1,4 @@
 <?php
-
 // Runs queries against the blog database
 	$query = function($query){
 		//mamp test server
@@ -30,7 +29,6 @@
 	    return $result;
 	};
 
-
 //test function for multiple variables
 	$test = function(){
 			$test = array();
@@ -41,11 +39,11 @@
 
 	$authenticate = function ($app) {
 	    return function () use ($app) {
-	        if (!isset($_SESSION['user'])) {
+	        if (!isset($_SESSION['username'])) {
 	            $_SESSION['urlRedirect'] = $app->request()->getPathInfo();
 	            $errors = Array();
 	            $errors['error'] = 'Login required';
-	            $errors['email'] = '';
+	            $errors['username'] = '';
 	            $app->flash('error', $errors);
 	            $app->redirect('/login');
 	        }
@@ -53,21 +51,21 @@
 	};
 
 	$app->hook('slim.before.dispatch', function() use ($app) { 
-	  $user = null;
-	  if (isset($_SESSION['user'])) {
-     $user = $_SESSION['user'];
+	  $username = null;
+	  if (isset($_SESSION['username'])) {
+     $username = $_SESSION['username'];
 	  }
 	  $displayName = null;
 	  if (isset($_SESSION['displayName'])) {
 	    $displayName = $_SESSION['displayName'];
 	  }
-	  $userNumber = null;
-	  if (isset($_SESSION['userNumber'])) {
-	    $userNumber = $_SESSION['userNumber'];
+	  $userId = null;
+	  if (isset($_SESSION['userId'])) {
+	    $userId = $_SESSION['userId'];
 	  }
 		$app->view()->setData(array(
-	    'user' => $user,
+	    'username' => $username,
 	    'displayName' => $displayName,
-	    'userNumber' => $userNumber
+	    'userId' => $userId
 		));
 	});

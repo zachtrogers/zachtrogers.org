@@ -1,4 +1,5 @@
 <?php
+
 	$app->post("/blogEdit/", function () use ($app, $query) {
     $post = addslashes($app->request()->post('post'));
 		$id = $app->request()->post('id');
@@ -14,12 +15,12 @@
 		$results = $results->fetch_assoc();
 		$post = $results['post'];
 		$title = $results['title'];
-		$id = $results['id'];
 		$url = $results['url'];
+		$id = $results['id'];
 		$flash = $app->view()->getData('flash');
 		$status = '';
 		if (isset($flash['status'])) {
         $status = $flash['status'];
      }
-	  $app->render('../templates/admin/blog/blogEdit.php', array('results' => $results, 'post' => $post, 'id' => $id, 'status' => $status, 'title' => $title, 'url' => $url));
+	  $app->render('../templates/admin/blog/blogEdit.php', array('results' => $results, 'post' => $post, 'status' => $status, 'title' => $title, 'url' => $url, 'id' => $id));
  	});

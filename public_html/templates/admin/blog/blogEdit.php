@@ -22,6 +22,7 @@
 							</form>
 						</section>
 					</article>
+					
 				<? require 'templates/public/menu.php' ?>
 				<? require 'templates/footer.php' ?>
 				<script src="/js/admin.js"></script>

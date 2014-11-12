@@ -9,11 +9,11 @@
 							<p class="status"><?=$status?></p>
 							<?endif;?>
 							<form action="/settings" method="post">
-								<span>Change Email</span>
-								<input type="text" name="email" value="<?=$email?>">
+								<span>Change Username</span>
+								<input type="text" name="username" value="<?=$username?>">
 								<br />
 								<span>Change Display Name</span>
-								<input type="text" name="userName" value="<?=$displayName?>">
+								<input type="text" name="displayName" value="<?=$displayName?>">
 								<br />
 								<span>Change Password</span>
 								<br />
@@ -23,7 +23,7 @@
 								<br />
 								<input type="password" name="passwordConfirm" placeholder="Confrim New Password">
 								<br />
-								<input type="hidden" name="id" value="<?=$userNumber?>">
+								<input type="hidden" name="id" value="<?=$userId?>">
 								<input type="submit" value="Save" />
 							</form>
 						</section>

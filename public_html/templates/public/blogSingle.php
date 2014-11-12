@@ -13,24 +13,16 @@
 									?>
 									<h2><?php echo $row['title']?></h2>
 									<div class="fb-like" data-href="http://www.zachtrogers.org/blog/<?php echo $row['url']?>" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
-									<?if (!empty($user)):?>
+									<?if (!empty($userId)):?>
                 		<button title="Edit" type="button" onclick="location.href='/blogEdit/<?php echo $row['url']?>'">
-					            <span>
-					              <span>
-					                <span>
-					                  Edit
-					                </span>
-					              </span>
-					            </span>
+			                <span>
+			                  Edit
+			                </span>
 					          </button>
 										<button title="Delete" type="button" onclick="location.href='/blogDelete/<?php echo $row['url']?>'">
-					            <span>
-					              <span>
-					                <span>
-					                  Delete
-					                </span>
-					              </span>
-					            </span>
+			                <span>
+			                  Delete
+			                </span>
 					          </button>
 		               <?endif;?>
 									<div>

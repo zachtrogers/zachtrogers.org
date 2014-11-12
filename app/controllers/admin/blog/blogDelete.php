@@ -1,4 +1,5 @@
 <?php
+
 	$app->post("/blogDelete", function () use ($app, $query) {
 		$id = $app->request()->post('id');
 		$results = $query('DELETE FROM ztr_blog WHERE id = \'' . $id . '\'');
@@ -7,9 +8,8 @@
   });
 
 	$app->get("/blogDelete/:url", $authenticate($app), function ($url) use ($app, $query) {
-		$results = $query('SELECT title, post, url, id FROM ztr_blog WHERE url =\'' . $url . '\'');
+		$results = $query('SELECT title, url, id FROM ztr_blog WHERE url =\'' . $url . '\'');
 		$results = $results->fetch_assoc();
-		$post = $results['post'];
 		$id = $results['id'];
 		$url = $results['url'];
 		$title = $results['title'];
@@ -18,5 +18,5 @@
 		if (isset($flash['status'])) {
         $status = $flash['status'];
      }
-	  $app->render('../templates/admin/blog/blogDelete.php', array('results' => $results, 'post' => $post, 'status' => $status, 'title' => $title, 'url' => $url, 'id' => $id));
+	  $app->render('../templates/admin/blog/blogDelete.php', array('results' => $results, 'status' => $status, 'title' => $title, 'url' => $url, 'id' => $id));
  	});

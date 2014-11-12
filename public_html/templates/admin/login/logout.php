@@ -5,11 +5,8 @@
 					<article id="blog">
 						<h3>Logout</h3>
 						<section>
-
 							<h2>You have logged out.</h2>
-
 							<p><a href="/">Back Home</a></p>
-
 						</section>
 					</article>
 

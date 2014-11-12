@@ -12,14 +12,14 @@
                 <li><a class="navBarLink" href="/#portfolio">Portfolio</a></li>
                 <li><a class="navBarLink" href="/#contact">Contact</a></li>
                 <li><a class="navBarLink" href="/blog">Blog</a></li>
-                <?if (empty($user)):?>
+                <?if (empty($username)):?>
             </ul>
         </div>
         <a class="navBarLink" id="downloadResumeButton" href="resume.pdf">Download Resume</a>
                 <?else:?>
                     <li id="adminMenu">
                         <a class="navBarLink admin" href="/blogNew">New Blog</a>
-                        <a class="navBarLink admin" href="/portfolio">New Portfolio</a>
+                        <a class="navBarLink admin" href="/portfolioNew">New Portfolio</a>
                         <a class="navBarLink admin" href="/settings">Settings</a>
                         <a class="navBarLink admin" href="/logout">Logout</a>
                     </li>
@@ -46,7 +46,7 @@
                 <li><a class="navBarLink" href="/#portfolio">Portfolio</a></li>
                 <li><a class="navBarLink" href="/#contact">Contact</a></li>
                 <li><a class="navBarLink" href="/blog">Blog</a></li>
-                <?if (empty($user)):?>
+                <?if (empty($username)):?>
             </ul>
         </div>
                 <?else:?>

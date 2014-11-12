@@ -2,23 +2,20 @@
 
 	<div id="wrapper" class="noVideo">
       <div class="background">
-					<article id="blog">
-						<h3>Blog</h3>
+					<article id="portfolio">
+						<h3>Portfolio</h3>
 						<section>
-							<form action="/blogDelete" method="post">
+							<form action="/portfolioDelete" method="post">
 								<input type="submit" value="Confirm Delete" />
 								<input type="hidden" name="id" value="<?=$id?>">
-								<span>of <?=$blogTitle?></span>
+								<input type="hidden" name="image" value="<?=$image?>">
+								<span>of <?=$title?></span>
 							</form>
-							<button title="Cancel" type="button" onclick="location.href='/blog/<?php echo $blogUrl ?>'">
-			            <span>
-			              <span>
-			                <span>
-			                  Cancel
-			                </span>
-			              </span>
-			            </span>
-			          </button>
+							<button title="Cancel" type="button" onclick="location.href='/#portfolio/<?php echo $url ?>'">
+                <span>
+                  Cancel
+                </span>
+			        </button>
 						</section>
 					</article>
 

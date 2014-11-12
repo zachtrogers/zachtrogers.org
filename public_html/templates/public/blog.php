@@ -5,7 +5,7 @@
 					<article id="blog">
 						<h3>Blog</h3>
 						<section>
-							<?if (!empty($user)):?>
+							<?if (!empty($userId)):?>
               	<button title="New" type="button" onclick="location.href='/blogNew'">
 		            <span>
 		              <span>
@@ -24,7 +24,7 @@
 									?>
 										<h2><a href="/blog/<?php echo $row['url']?>"><?php echo $row['title']?><a/></h2>
 										<div class="fb-like" data-href="http://www.zachtrogers.org/blog/<?php echo $row['url']?>" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
-										<?if (!empty($user)):?>
+										<?if (!empty($userId)):?>
 		                	<button title="Edit" type="button" onclick="location.href='/blogEdit/<?php echo $row['url']?>'">
 				                <span>
 				                  Edit

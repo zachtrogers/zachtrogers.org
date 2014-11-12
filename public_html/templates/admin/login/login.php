@@ -11,7 +11,7 @@
 							<?endif;?>
 
 							<form action="/login" method="POST">
-							  <p>Email: <input type="text" name="email" id="email" value="<?=$email_value?>" /></p>
+							  <p>Email: <input type="text" name="username" id="username" value="<?=$username_value?>" /></p>
 							  <p>Password: <input type="password" name="password" id="password" /></p>
 							  <p><input type="submit" value="Login" />
 							</form>
